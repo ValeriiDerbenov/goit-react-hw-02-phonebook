@@ -1,5 +1,5 @@
 import { Component } from "react"
-
+import './App.css';
 
 import AddContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";

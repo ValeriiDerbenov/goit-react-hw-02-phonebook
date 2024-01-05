@@ -3,6 +3,7 @@ import './App.css';
 
 import AddContactForm from "./ContactForm/ContactForm";
 import Filter from "./Filter/Filter";
+import { ContactList } from "./ContactList/ContactList";
 
 export class App extends Component {
   state = {
@@ -17,6 +18,7 @@ export class App extends Component {
       <AddContactForm onAddContact={this.handleAddContact} />
       <h2>Contacts</h2>
       <Filter onFilter={this.handleFilter} filter={this.state.filter} />
+      <ContactList />
     </section>
       
 

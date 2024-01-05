@@ -17,7 +17,8 @@ export default class AddContactForm extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-
+// console.log('this.props :>> ', this.props);
+		this.props.onSubmit({...this.state}); 
 		const id = nanoid (6);
 		const { name, number } = this.state;
     const { onAddContact } = this.props;

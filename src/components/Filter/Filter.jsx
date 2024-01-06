@@ -9,11 +9,14 @@ export default class Filter extends Component {
 	};
 
 	render() {
-
+		const { filter, onFilter } = this.props;
 		return (
-			<label htmlFor="">
+			<label>
 				Find contacts by name
-				<input type="text" onChange={this.props.onFilter} value={this.props.filter}  />
+				<input 
+				placeholder="Search"
+				type="text" 
+				onChange={onFilter} value={filter}  />
 			</label>
 		)
 	}

@@ -11,8 +11,9 @@ export class App extends Component {
     contacts: [{
       id: nanoid(6),
       name: 'Val',
-      number: '+380 98 380 4 380',
-    }],
+      number: '+380 98 380 4 380'
+    },
+  ],
     filter: ''
   }
 
@@ -52,16 +53,40 @@ export class App extends Component {
       }
     })
   }
+
+  changeFilter = ({target}) => {
+    console.log('target :>> ', target);
+    this.setState({
+      filter: target.value,
+    })
+  }
+
+  getFilteredContact() {
+    const {filter, contacts} = this.state;
+
+    const normalizedFilter = filter.toLowerCase();
+
+    const filteredContacts = contacts.filter(({name, number}) => { 
+      const normalizedName = name.toLowerCase();
+      const normalizedNumber = number.toLowerCase();
+
+      return (normalizedName.includes(normalizedFilter) || normalizedNumber.includes(normalizedFilter))
+    })
+    return filteredContacts;
+  }
   
   render() { 
-    const {contacts} = this.state;
+    // const {contacts} = this.state;
     const {handleAddContact} = this;
+    const contacts = this.getFilteredContact();
+
     return (
     <section>
       <h1>Phonebook</h1>
       <AddContactForm onSubmit={handleAddContact} />
       <h2>Contacts</h2>
-      <Filter onFilter={this.handleFilter} filter={this.state.filter} />
+      <Filter onFilter={this.changeFilter} filter={this.state.filter}/>
+      {/* <input name='filter' placeholder="Search" /> */}
       <ContactList contacts={contacts} deleteContact={this.deleteContact} />
     </section>
       

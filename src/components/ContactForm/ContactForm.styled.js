@@ -14,6 +14,9 @@ export const Form = styled.form`
     height: 30px;
     border-radius: 6px;
     font-size: 18px;
+    placeholder {
+      font-size: 12px;
+    }
   }
 `;
 export const Button = styled.button`
@@ -27,6 +30,6 @@ export const Button = styled.button`
   font-weight: 700;
   cursor: pointer;
   &:hover {
-    background-color: #ff8585;
+    background-color: #2eee0c;
   }
 `;

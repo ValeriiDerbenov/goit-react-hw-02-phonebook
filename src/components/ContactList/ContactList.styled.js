@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const List = styled.ul`
   margin-top: 30px;
   gap: 10px;
+  li {
+    margin-bottom: 8px;
+  }
   button {
     background-color: #535eaa;
     color: white;
@@ -14,6 +17,6 @@ export const List = styled.ul`
     font-weight: 700;
   }
   button:hover {
-    background-color: #ff8585;
+    background-color: #f50c0c;
   }
 `;

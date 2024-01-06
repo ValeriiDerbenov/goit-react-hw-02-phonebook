@@ -13,7 +13,4 @@ export const FilterInput = styled.input`
   font-weight: 500;
   border-radius: 6px;
   font-size: 18px;
-  .placeholder {
-    font-size: 12px;
-  }
 `;

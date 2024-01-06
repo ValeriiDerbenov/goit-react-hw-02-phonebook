@@ -10,7 +10,7 @@ export class App extends Component {
   state = {
     contacts: [{
       id: nanoid(6),
-      name: 'Val',
+      name: 'Valerii',
       number: '+380 98 380 4 380'
     },
   ],
@@ -75,8 +75,7 @@ export class App extends Component {
     return filteredContacts;
   }
   
-  render() { 
-    // const {contacts} = this.state;
+  render() {    
     const {handleAddContact} = this;
     const contacts = this.getFilteredContact();
 
@@ -85,8 +84,7 @@ export class App extends Component {
       <h1>Phonebook</h1>
       <AddContactForm onSubmit={handleAddContact} />
       <h2>Contacts</h2>
-      <Filter onFilter={this.changeFilter} filter={this.state.filter}/>
-      {/* <input name='filter' placeholder="Search" /> */}
+      <Filter onFilter={this.changeFilter} filter={this.state.filter}/>     
       <ContactList contacts={contacts} deleteContact={this.deleteContact} />
     </section>
       

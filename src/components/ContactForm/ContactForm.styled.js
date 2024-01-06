@@ -17,13 +17,16 @@ export const Form = styled.form`
   }
 `;
 export const Button = styled.button`
-  background-color: rgba(68, 68, 223, 0.903);
+  background-color: #535eaa;
   color: white;
-  height: 35px;
+  height: 36px;
   margin-block: 20px;
   border-radius: 6px;
-  border: 1px solid;
+  border: none;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
+  &:hover {
+    background-color: #ff8585;
+  }
 `;

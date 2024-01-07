@@ -13,7 +13,6 @@ export default class AddContactForm extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		this.props.onAddContact({...this.state});
 		// this.props.onSubmit({...this.state}); 
 		const id = nanoid (6);
 		const { name, number } = this.state;
@@ -74,13 +73,9 @@ export default class AddContactForm extends Component {
 			</Form>
 		);
 	}
-
 	static propTypes = {
-		onAddContact: PropTypes.func.isRequired,
+   onAddContact: PropTypes.func.isRequired,
   };
-	// static propTypes = {
-  //   onAddContact: PropTypes.func.isRequired,
-  // };
 }
 
 // AddContactForm.propTypes = {

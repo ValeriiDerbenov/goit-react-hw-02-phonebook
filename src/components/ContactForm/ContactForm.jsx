@@ -17,7 +17,6 @@ export default class AddContactForm extends Component {
 		const id = nanoid (6);
 		const { name, number } = this.state;
     const { onAddContact } = this.props;
-		// console.log('name, number :>> ', name, number);
 		this.reset();
 		onAddContact({id, name, number});
 	}
@@ -29,10 +28,8 @@ export default class AddContactForm extends Component {
 	contactNameId = nanoid()
 	contactPhoneId = nanoid()
 
-	handleChange = ({target}) => {
-		// console.log('e.target.value :>> ', e.target.value);
+	handleChange = ({target}) => {	
 		const {name, value} = target;
-		// console.log('onChange');
 
 		this.setState({[name]: value});
 	};
@@ -49,12 +46,11 @@ export default class AddContactForm extends Component {
 					id={contactNameId}
 					type="text"
 					name="name"
-					// placeholder="Name"
 					required
 					onChange={handleChange}
 					value={name}
 					pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
 				/>
 				
 				<label htmlFor={contactPhoneId}>
@@ -64,14 +60,13 @@ export default class AddContactForm extends Component {
 					id={contactPhoneId}
 					type="tel"
 					name="number"
-					// placeholder="Phone number"
 					required
 					onChange={handleChange}
 					value={number}
 					pattern="\+?\d{(1, 4)}?[ .\-\s]?\(?\d{(1, 3)}?\)?[ .\-\s]?\d{(1, 4)}[
 						.\-\s]?\d{(1, 4)}[ .\-\s]?\d{(1, 9)}"
-							title="Phone number must be
-						digits and can contain spaces, dashes, parentheses and can start with +"
+					title="Phone number must be
+					digits and can contain spaces, dashes, parentheses and can start with +"
 				/>
 				
 				<Button type='submit'>Add contact</Button>

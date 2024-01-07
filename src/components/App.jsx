@@ -1,4 +1,5 @@
 import { Component } from "react"
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import './App.css';
 
 import AddContactForm from "./ContactForm/ContactForm";
@@ -18,31 +19,19 @@ export class App extends Component {
   }
 
   handleAddContact = data => {
-// console.log(data)
-    const {name, number} = data;
-    const normalizedName = name.toLowerCase();
-    const normalizedNumber = number.toLowerCase();
-    const {contacts} = this.state;
-
-    const dublicate = contacts.find(item => {
-      const normalizedCurrentName = item.name.toLowerCase();
-      const normalizedCurrentNumber = item.number.toLowerCase();
-      return (normalizedCurrentName === normalizedName && normalizedCurrentNumber === normalizedNumber);
-    });
-    if (dublicate) {
-      return alert(`${name} ${number} is already in contacts` )
-    }
-
-    this.setState(({contacts}) => {
-      const newContact = {
-        id: nanoid(6),
-        ...data,
-      }
-      return {
-        contacts: [...contacts, newContact]
-      }
+    const newContact = { id: nanoid(), ...data };
+    this.state.contacts.some(({ name }) => {
+      return name.toLocaleLowerCase() === newContact.name.toLocaleLowerCase();
     })
-  }
+      ? Notify.warning(`${newContact.name} is already in contacts`, {
+          width: '360px',
+          timeout: 5000,
+          fontSize: '20px',
+        })
+      : this.setState(({ contacts }) => {
+          return { contacts: [...contacts, newContact] };
+        });
+  };
 
   deleteContact = (id) => {
     this.setState(({contacts}) => {

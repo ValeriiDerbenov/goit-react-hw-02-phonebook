@@ -13,7 +13,6 @@ export default class AddContactForm extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-// console.log('this.props :>> ', this.props);
 		this.props.onSubmit({...this.state}); 
 		const id = nanoid (6);
 		const { name, number } = this.state;
@@ -40,7 +39,7 @@ export default class AddContactForm extends Component {
 
 	render() {
 		const {contactNameId, contactPhoneId, handleSubmit, handleChange} = this;
-		const { number, name} =this.state;
+		const {number, name} =this.state;
 		return (
 			<Form onSubmit={handleSubmit}>
 				<label htmlFor={contactNameId}>
@@ -54,6 +53,8 @@ export default class AddContactForm extends Component {
 					required
 					onChange={handleChange}
 					value={name}
+					pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
 				/>
 				
 				<label htmlFor={contactPhoneId}>
@@ -67,14 +68,22 @@ export default class AddContactForm extends Component {
 					required
 					onChange={handleChange}
 					value={number}
+					pattern="\+?\d{(1, 4)}?[ .\-\s]?\(?\d{(1, 3)}?\)?[ .\-\s]?\d{(1, 4)}[
+						.\-\s]?\d{(1, 4)}[ .\-\s]?\d{(1, 9)}"
+							title="Phone number must be
+						digits and can contain spaces, dashes, parentheses and can start with +"
 				/>
 				
 				<Button type='submit'>Add contact</Button>
 			</Form>
 		);
 	}
+	static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+		onAddContact: PropTypes.func.isRequired,
+  };
 }
 
-AddContactForm.propTypes = {
-	onAddContact: PropTypes.func,
-};
+// AddContactForm.propTypes = {
+// 	onAddContact: PropTypes.func,
+// };

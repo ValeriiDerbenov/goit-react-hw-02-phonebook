@@ -14,9 +14,6 @@ export const Form = styled.form`
     height: 30px;
     border-radius: 6px;
     font-size: 18px;
-    placeholder {
-      font-size: 12px;
-    }
   }
 `;
 export const Button = styled.button`

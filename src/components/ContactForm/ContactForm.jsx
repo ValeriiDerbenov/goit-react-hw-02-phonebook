@@ -13,7 +13,8 @@ export default class AddContactForm extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		this.props.onSubmit({...this.state}); 
+		this.props.onAddContact({...this.state});
+		// this.props.onSubmit({...this.state}); 
 		const id = nanoid (6);
 		const { name, number } = this.state;
     const { onAddContact } = this.props;
@@ -63,8 +64,8 @@ export default class AddContactForm extends Component {
 					required
 					onChange={handleChange}
 					value={number}
-					pattern="\+?\d{(1, 4)}?[ .\-\s]?\(?\d{(1, 3)}?\)?[ .\-\s]?\d{(1, 4)}[
-						.\-\s]?\d{(1, 4)}[ .\-\s]?\d{(1, 9)}"
+					pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[
+						.\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
 					title="Phone number must be
 					digits and can contain spaces, dashes, parentheses and can start with +"
 				/>
@@ -73,10 +74,13 @@ export default class AddContactForm extends Component {
 			</Form>
 		);
 	}
+
 	static propTypes = {
-    onSubmit: PropTypes.func.isRequired,
 		onAddContact: PropTypes.func.isRequired,
   };
+	// static propTypes = {
+  //   onAddContact: PropTypes.func.isRequired,
+  // };
 }
 
 // AddContactForm.propTypes = {

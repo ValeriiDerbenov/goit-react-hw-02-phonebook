@@ -71,12 +71,10 @@ export class App extends Component {
     return (
     <section>
       <h1>Phonebook</h1>
-      <AddContactForm onSubmit={handleAddContact} />
+      <AddContactForm onAddContact={handleAddContact} />
       <h2>Contacts</h2>
       <Filter onFilter={this.changeFilter} filter={this.state.filter}/>     
       <ContactList contacts={contacts} deleteContact={this.deleteContact} />
     </section>
-      
-
   );}
 };
